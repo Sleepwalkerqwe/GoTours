@@ -19,6 +19,8 @@
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
     "node/no-unsupported-features/es-syntax": "off",
+    "lines-between-class-members": "off",
+    "no-undef": "off",
     "prefer-destructuring": ["off", { "object": true, "array": false }],
     "import/no-extraneous-dependencies": "off",
 
