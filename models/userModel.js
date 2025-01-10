@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs');
 // const { URL } = require('url');
 // const { isLowercase } = require('validator');
 
-// name, email,
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -35,6 +34,7 @@ const userSchema = new mongoose.Schema({
       message: 'A password should be equal each other',
     },
   },
+  passwordChangedAt: Date,
 });
 userSchema.pre('save', async function (next) {
   // Only run this function if password was modified
@@ -52,6 +52,13 @@ userSchema.methods.correctPassword = async function (candidatePassword, userPass
   return await bcrypt.compare(candidatePassword, userPassword);
 };
 
+userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000, 10);
+    return JWTTimestamp < changedTimestamp;
+  }
+  return false;
+};
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
