@@ -60,7 +60,7 @@ module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500; // Исправлено на statusCode
   err.status = err.status || 'error';
 
-  let error = { ...err };
+  let error = { ...err, message: err.message, stack: err.stack };
 
   if (error.name === 'CastError') error = handleCastErrorDB(error);
   if (error.code === 11000) error = handleDuplicateFieldsDB(error);
