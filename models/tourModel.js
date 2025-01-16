@@ -98,7 +98,7 @@ const tourSchema = new mongoose.Schema(
         day: Number,
       },
     ],
-    guides: Array,
+    guides: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   },
   {
     toJSON: { virtuals: true },
@@ -124,9 +124,18 @@ tourSchema.pre('save', async function (next) {
   next();
 });
 
+tourSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'guides',
+    select: '-__v -passwordChangedAt',
+  });
+
+  next();
+});
+
 // Query Middleware
 tourSchema.pre(/^find/, function (next) {
-  // чтобы для всех файнд нельзя было найти
+  // чтобы для всех файнд нельзя было найти сикрет тур
   // tourSchema.pre('find', function (next) {
 
   this.find({ secretTour: { $ne: true } });
