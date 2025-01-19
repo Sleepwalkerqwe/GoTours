@@ -1,7 +1,7 @@
 const express = require('express');
 const tourController = require('./../controllers/tourController');
 const authController = require('./../controllers/authController');
-const reviewController = require('./../controllers/reviewController');
+const reviewRouter = require('./../routes/reviewRoutes');
 
 const router = express.Router();
 
@@ -9,6 +9,8 @@ const router = express.Router();
 // Check if body contains the name and price property
 // If not, send back bad request (400)
 // Add it to the post handler stack
+
+router.use('/:tourId/reviews', reviewRouter);
 
 router.route('/top-5-cheap').get(tourController.aliasTopTours, tourController.getAllTours);
 
@@ -30,8 +32,5 @@ router.route('/:id').get(tourController.getTour).patch(tourController.updateTour
 // POST /tour/132131/reviews
 // GET /tour/132131/reviews
 // GET /tour/132131/reviews/
-router
-  .route('/:tourId/reviews')
-  .post(authController.protect, authController.restrictTo('users'), reviewController.createReview);
 
 module.exports = router;
