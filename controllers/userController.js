@@ -82,12 +82,12 @@ exports.createUser = (req, res) => {
   });
 };
 
-exports.updateUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined!',
-  });
-};
+// exports.updateUser = (req, res) => {
+//   res.status(500).json({
+//     status: 'error',
+//     message: 'This route is not yet defined!',
+//   });
+// };
 
 // exports.deleteUser = (req, res) => {
 //   res.status(500).json({
@@ -96,4 +96,6 @@ exports.updateUser = (req, res) => {
 //   });
 // };
 
-exports.deleteUser = factory.deleteOne(Tour);
+// Do Not update passwords wit this
+exports.updateUser = factory.updateOne(User);
+exports.deleteUser = factory.deleteOne(User);
