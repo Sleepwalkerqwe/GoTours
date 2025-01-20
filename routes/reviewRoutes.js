@@ -3,21 +3,21 @@ const reviewController = require('./../controllers/reviewController');
 const authController = require('./../controllers/authController');
 const router = express.Router({ mergeParams: true });
 
+router.use(authController.protect);
 router
   .route('/')
-  .get(authController.protect, reviewController.getAllReviews)
+  .get(reviewController.getAllReviews)
   .post(
-    authController.protect,
-    authController.restrictTo('guide'),
+    authController.restrictTo('user'),
     reviewController.setTourUserIds,
     reviewController.createReview,
   );
 
 router
   .route('/:id')
-  .get(authController.protect, reviewController.getReview)
+  .get(reviewController.getReview)
   .patch(reviewController.updateReview)
-  .delete(authController.protect, reviewController.deleteReview);
+  .delete(reviewController.deleteReview);
 
 module.exports = router;
 // populate two fields
