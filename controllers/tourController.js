@@ -116,3 +116,14 @@ exports.getToursWithin = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.getDistances = catchAsync(async (req, res, next) => {
+  const { latlng, unit } = req.params;
+  const [lat, lng] = latlng.split(',');
+
+  if (!lat || !lng) {
+    next(new AppError('Please provide latitude and longtitude in the format lat, lng.', 400));
+  }
+
+  const t = await Tour.aggregate;
+});
