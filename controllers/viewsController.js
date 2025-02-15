@@ -1,6 +1,7 @@
 const Tour = require('../models/tourModel');
 const Review = require('../models/reviewModel');
 const catchAsync = require('../utils/catchAsync');
+const AppError = require('../utils/appError');
 
 exports.getOverview = catchAsync(async (req, res, next) => {
   // 1) Get tour data from collection
@@ -20,6 +21,10 @@ exports.getTour = catchAsync(async (req, res, next) => {
     path: 'reviews',
     fields: 'review rating user ',
   });
+
+  if (!tour) {
+    return next(new AppError('There is no tour with that name'));
+  }
   //2) Build template
 
   //3) Render template using data from 1
@@ -38,5 +43,11 @@ exports.getTour = catchAsync(async (req, res, next) => {
 exports.getLoginForm = (req, res) => {
   res.status(200).render('login', {
     title: 'Log into your account',
+  });
+};
+
+exports.getAccount = (req, res) => {
+  res.status(200).render('account', {
+    title: 'Your account',
   });
 };
