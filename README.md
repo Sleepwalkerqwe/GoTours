@@ -92,11 +92,11 @@ This section showcases the foundational elements of my project. Here, you'll fin
 ![Visual Studio](https://img.shields.io/badge/visualstudio-black?style=for-the-badge&logo=visual%20studio&logoColor=blue
 )
 
-REST API
+## REST API
 
 Natours provides a RESTful API
 
 ## Deployment
 
-## The project is hosted on Render
+The project is hosted on Render
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
