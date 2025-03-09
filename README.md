@@ -6,6 +6,10 @@
   <br>
 </h1>
 
+## About The Project
+
+Natours is a web application for booking tours, designed for travelers to explore iconic destinations effortlessly. It provides curated tours, seamless facilities, and unforgettable adventures. Users can access the platform through the web interface or integrate with the system via the provided REST API.
+
 <br />
 <div align="center">
   
