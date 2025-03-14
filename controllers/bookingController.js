@@ -2,7 +2,6 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const Tour = require('../models/tourModel');
 const Booking = require('../models/bookingModel');
 const catchAsync = require('../utils/catchAsync');
-const AppError = require('../utils/appError');
 const factory = require('./handlerFactory');
 const User = require('../models/userModel');
 
@@ -62,7 +61,6 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   }
 
   // 3) Create session as response
-  console.log(session);
   console.log('getCheckOutSession done');
   res.status(200).json({
     status: 'success',
@@ -85,7 +83,6 @@ exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers['stripe-signature'];
 
   let event;
-  console.log('Webhook checkout is on process');
   try {
     event = stripe.webhooks.constructEvent(req.body, signature, process.env.STRIPE_WEBHOOK_SECRET);
   } catch (err) {
