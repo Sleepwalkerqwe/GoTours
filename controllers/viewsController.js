@@ -62,7 +62,7 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
   const bookings = await Booking.find({ tour: req.user.id });
 
   if (bookings.length == 0) {
-    res.status(200).set('Content-Security-Policy', CSP_HEADER).render('overview', {
+    return res.status(200).set('Content-Security-Policy', CSP_HEADER).render('overview', {
       title: 'My bookings',
       message: 'You have no bookings yet.  Book a tour now!',
     });
