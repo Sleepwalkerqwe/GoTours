@@ -92,9 +92,9 @@ exports.webhookCheckout = (req, res, next) => {
 
   let event;
   try {
-    console.log('STRIPE_WEBHOOK_SECRET:', process.env.STRIPE_SECRET_KEY);
+    console.log('STRIPE_WEBHOOK_SECRET:', process.env.STRIPE_WEBHOOK_SECRET);
 
-    event = stripe.webhooks.constructEvent(req.body, signature, process.env.STRIPE_SECRET_KEY);
+    event = stripe.webhooks.constructEvent(req.body, signature, process.env.STRIPE_WEBHOOK_SECRET);
     console.log('✅ Webhook успешно обработан!', event);
   } catch (err) {
     console.log('❌ Webhook error:', err.message);
