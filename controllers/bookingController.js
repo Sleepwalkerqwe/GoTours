@@ -79,19 +79,30 @@ const createBookingCheckout = async (session) => {
 
 exports.webhookCheckout = (req, res, next) => {
   console.log('Webhook checkout is on process');
+  console.log('Headers:', req.headers);
+  console.log('Raw Body:', req.body); // Должен быть Buffer
 
   const signature = req.headers['stripe-signature'];
+  console.log('Stripe Signature:', signature); // Должно быть строкой
+
+  if (!signature) {
+    console.log('❌ Ошибка: Stripe-Signature отсутствует!');
+    return res.status(400).send('Webhook error: Missing Stripe signature');
+  }
 
   let event;
   try {
     event = stripe.webhooks.constructEvent(req.body, signature, process.env.STRIPE_WEBHOOK_SECRET);
+    console.log('✅ Webhook успешно обработан!', event);
   } catch (err) {
+    console.log('❌ Webhook error:', err.message);
     return res.status(400).send(`Webhook error: ${err.message}`);
   }
 
-  if (event.type === 'checkout.session.completed' || event.type === 'checkout.session.async_payment_succeeded') {
+  if (event.type === 'checkout.session.completed') {
     createBookingCheckout(event.data.object);
   }
+
   res.status(200).json({ received: true });
 };
 
