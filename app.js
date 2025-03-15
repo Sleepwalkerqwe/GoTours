@@ -22,6 +22,8 @@ const bookingController = require('./controllers/bookingController');
 
 const app = express();
 
+app.post('/webhook-checkout', express.raw({ type: 'application/json' }), bookingController.webhookCheckout);
+
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -45,8 +47,6 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 app.set('trust proxy', 1);
-
-app.post('/webhook-checkout', express.raw({ type: 'application/json' }), bookingController.webhookCheckout);
 
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
