@@ -59,7 +59,8 @@ exports.getAccount = (req, res) => {
 
 exports.getMyTours = catchAsync(async (req, res, next) => {
   // 1) Find all bookings
-  const bookings = await Booking.find({ tour: req.user.id });
+  const bookings = await Booking.find({ user: req.user.id });
+  console.log(bookings);
 
   if (bookings.length == 0) {
     return res.status(200).set('Content-Security-Policy', CSP_HEADER).render('overview', {
