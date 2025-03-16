@@ -71,6 +71,27 @@ export const logout = async () => {
   }
 };
 
+export const forgot = async (email) => {
+  try {
+    const res = await axios({
+      method: 'POST',
+      baseURL: '', // Переопределяем baseURL для этого запроса, оставляем его пустым
+      url: 'api/v1/users/forgotPassword',
+      data: {
+        email,
+      },
+    });
+    if (res.data.status == 'success') {
+      console.log('sgsfdjasdli');
+      showAlert('success', 'Reset successfully!');
+    }
+  } catch (err) {
+    console.log(err);
+    console.log(err.message);
+    showAlert('error', 'Error reset password!! Try again.');
+  }
+};
+
 export const reset = async (password, passwordConfirm, token) => {
   try {
     const res = await axios({
@@ -90,8 +111,6 @@ export const reset = async (password, passwordConfirm, token) => {
       }, 1500);
     }
   } catch (err) {
-    console.log(err);
-    console.log(err.message);
     showAlert('error', 'Error reset password!! Try again.');
   }
 };

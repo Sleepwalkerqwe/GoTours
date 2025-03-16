@@ -12631,7 +12631,7 @@ var showAlert = exports.showAlert = function showAlert(type, msg) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.signup = exports.reset = exports.logout = exports.login = void 0;
+exports.signup = exports.reset = exports.logout = exports.login = exports.forgot = void 0;
 var _axios = _interopRequireDefault(require("axios"));
 var _alert = require("./alert");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -12763,8 +12763,8 @@ var logout = exports.logout = /*#__PURE__*/function () {
     return _ref3.apply(this, arguments);
   };
 }();
-var reset = exports.reset = /*#__PURE__*/function () {
-  var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(password, passwordConfirm, token) {
+var forgot = exports.forgot = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(email) {
     var res;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
@@ -12772,23 +12772,19 @@ var reset = exports.reset = /*#__PURE__*/function () {
           _context4.prev = 0;
           _context4.next = 3;
           return (0, _axios.default)({
-            method: 'patch',
+            method: 'POST',
             baseURL: '',
             // Переопределяем baseURL для этого запроса, оставляем его пустым
-            url: "/api/v1/users/resetPassword/".concat(token),
-            // Путь будет относительным
+            url: 'api/v1/users/forgotPassword',
             data: {
-              password: password,
-              passwordConfirm: passwordConfirm
+              email: email
             }
           });
         case 3:
           res = _context4.sent;
           if (res.data.status == 'success') {
+            console.log('sgsfdjasdli');
             (0, _alert.showAlert)('success', 'Reset successfully!');
-            window.setTimeout(function () {
-              location.assign('/');
-            }, 1500);
           }
           _context4.next = 12;
           break;
@@ -12804,8 +12800,51 @@ var reset = exports.reset = /*#__PURE__*/function () {
       }
     }, _callee4, null, [[0, 7]]);
   }));
-  return function reset(_x7, _x8, _x9) {
+  return function forgot(_x7) {
     return _ref4.apply(this, arguments);
+  };
+}();
+var reset = exports.reset = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(password, passwordConfirm, token) {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+      while (1) switch (_context5.prev = _context5.next) {
+        case 0:
+          _context5.prev = 0;
+          _context5.next = 3;
+          return (0, _axios.default)({
+            method: 'patch',
+            baseURL: '',
+            // Переопределяем baseURL для этого запроса, оставляем его пустым
+            url: "/api/v1/users/resetPassword/".concat(token),
+            // Путь будет относительным
+            data: {
+              password: password,
+              passwordConfirm: passwordConfirm
+            }
+          });
+        case 3:
+          res = _context5.sent;
+          if (res.data.status == 'success') {
+            (0, _alert.showAlert)('success', 'Reset successfully!');
+            window.setTimeout(function () {
+              location.assign('/');
+            }, 1500);
+          }
+          _context5.next = 10;
+          break;
+        case 7:
+          _context5.prev = 7;
+          _context5.t0 = _context5["catch"](0);
+          (0, _alert.showAlert)('error', 'Error reset password!! Try again.');
+        case 10:
+        case "end":
+          return _context5.stop();
+      }
+    }, _callee5, null, [[0, 7]]);
+  }));
+  return function reset(_x8, _x9, _x10) {
+    return _ref5.apply(this, arguments);
   };
 }();
 },{"axios":"../../node_modules/axios/index.js","./alert":"alert.js"}],"updateSettings.js":[function(require,module,exports) {
@@ -13062,6 +13101,7 @@ var loginForm = document.querySelector('.form--login');
 var signupForm = document.querySelector('.form--signup');
 var resetPasswordForm = document.querySelector('.form--reset');
 var logOutBtn = document.querySelector('.nav__el--logout');
+var forgotBtn = document.querySelector('#forgotBtn');
 var userDataForm = document.querySelector('.form-user-data');
 var userPasswordForm = document.querySelector('.form-user-password');
 var bookBtn = document.getElementById('book-tour');
@@ -13075,7 +13115,12 @@ if (mapBox) {
   (0, _mapbox.displayMap)(locations);
 }
 if (loginForm) {
-  console.log('form is here');
+  console.log('login form is here');
+  forgotBtn.addEventListener('click', function (e) {
+    console.log(123);
+    var email = document.getElementById('email').value;
+    (0, _login.forgot)(email);
+  });
   loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
     // VALUES

@@ -1,7 +1,7 @@
 /* eslint-disable*/
 import '@babel/polyfill';
 import { displayMap } from './mapbox';
-import { login, logout, signup, reset } from './login';
+import { login, logout, signup, reset, forgot } from './login';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 import { showAlert } from './alert';
@@ -13,6 +13,7 @@ const signupForm = document.querySelector('.form--signup');
 const resetPasswordForm = document.querySelector('.form--reset');
 
 const logOutBtn = document.querySelector('.nav__el--logout');
+const forgotBtn = document.querySelector('#forgotBtn');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
@@ -27,7 +28,15 @@ if (mapBox) {
 }
 
 if (loginForm) {
-  console.log('form is here');
+  console.log('login form is here');
+
+  forgotBtn.addEventListener('click', (e) => {
+    console.log(123);
+
+    const email = document.getElementById('email').value;
+
+    forgot(email);
+  });
 
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
