@@ -1,7 +1,7 @@
 /* eslint-disable*/
 import '@babel/polyfill';
 import { displayMap } from './mapbox';
-import { login, logout, signup } from './login';
+import { login, logout, signup, reset } from './login';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 import { showAlert } from './alert';
@@ -10,6 +10,7 @@ import { showAlert } from './alert';
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
 const signupForm = document.querySelector('.form--signup');
+const resetPasswordForm = document.querySelector('.form--reset');
 
 const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
@@ -58,6 +59,26 @@ if (signupForm) {
   });
 }
 
+if (resetPasswordForm) {
+  console.log('reset password form is here');
+  const token = window.location.pathname.split('/').pop();
+  console.log('token is - ', token);
+  resetPasswordForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // VALUES
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('passwordConfirm').value;
+
+    if (password !== passwordConfirm) {
+      showAlert('error', 'Passwords must be same');
+    } else {
+      console.log('signup in progress');
+
+      reset(password, passwordConfirm, token);
+    }
+  });
+}
+
 if (logOutBtn) logOutBtn.addEventListener('click', logout);
 
 if (userDataForm) {
@@ -73,8 +94,6 @@ if (userDataForm) {
 
     updateSettings(form, 'data');
   });
-} else {
-  console.log('there is no user data form');
 }
 
 if (userPasswordForm) {

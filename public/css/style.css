@@ -1181,6 +1181,7 @@ body {
 }
 
 .login-form,
+.reset-form,
 .signup-form {
   margin: 0 auto;
   max-width: 55rem;

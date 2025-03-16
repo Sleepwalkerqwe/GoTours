@@ -12631,7 +12631,7 @@ var showAlert = exports.showAlert = function showAlert(type, msg) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.signup = exports.logout = exports.login = void 0;
+exports.signup = exports.reset = exports.logout = exports.login = void 0;
 var _axios = _interopRequireDefault(require("axios"));
 var _alert = require("./alert");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -12761,6 +12761,51 @@ var logout = exports.logout = /*#__PURE__*/function () {
   }));
   return function logout() {
     return _ref3.apply(this, arguments);
+  };
+}();
+var reset = exports.reset = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(password, passwordConfirm, token) {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
+        case 0:
+          _context4.prev = 0;
+          _context4.next = 3;
+          return (0, _axios.default)({
+            method: 'patch',
+            baseURL: '',
+            // Переопределяем baseURL для этого запроса, оставляем его пустым
+            url: "/api/v1/users/resetPassword/".concat(token),
+            // Путь будет относительным
+            data: {
+              password: password,
+              passwordConfirm: passwordConfirm
+            }
+          });
+        case 3:
+          res = _context4.sent;
+          if (res.data.status == 'success') {
+            (0, _alert.showAlert)('success', 'Reset successfully!');
+            window.setTimeout(function () {
+              location.assign('/');
+            }, 1500);
+          }
+          _context4.next = 12;
+          break;
+        case 7:
+          _context4.prev = 7;
+          _context4.t0 = _context4["catch"](0);
+          console.log(_context4.t0);
+          console.log(_context4.t0.message);
+          (0, _alert.showAlert)('error', 'Error reset password!! Try again.');
+        case 12:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4, null, [[0, 7]]);
+  }));
+  return function reset(_x7, _x8, _x9) {
+    return _ref4.apply(this, arguments);
   };
 }();
 },{"axios":"../../node_modules/axios/index.js","./alert":"alert.js"}],"updateSettings.js":[function(require,module,exports) {
@@ -13015,6 +13060,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
 var mapBox = document.getElementById('map');
 var loginForm = document.querySelector('.form--login');
 var signupForm = document.querySelector('.form--signup');
+var resetPasswordForm = document.querySelector('.form--reset');
 var logOutBtn = document.querySelector('.nav__el--logout');
 var userDataForm = document.querySelector('.form-user-data');
 var userPasswordForm = document.querySelector('.form-user-password');
@@ -13056,6 +13102,23 @@ if (signupForm) {
     }
   });
 }
+if (resetPasswordForm) {
+  console.log('reset password form is here');
+  var token = window.location.pathname.split('/').pop();
+  console.log('token is - ', token);
+  resetPasswordForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    // VALUES
+    var password = document.getElementById('password').value;
+    var passwordConfirm = document.getElementById('passwordConfirm').value;
+    if (password !== passwordConfirm) {
+      (0, _alert.showAlert)('error', 'Passwords must be same');
+    } else {
+      console.log('signup in progress');
+      (0, _login.reset)(password, passwordConfirm, token);
+    }
+  });
+}
 if (logOutBtn) logOutBtn.addEventListener('click', _login.logout);
 if (userDataForm) {
   userDataForm.addEventListener('submit', function (e) {
@@ -13067,8 +13130,6 @@ if (userDataForm) {
     console.log(form);
     (0, _updateSettings.updateSettings)(form, 'data');
   });
-} else {
-  console.log('there is no user data form');
 }
 if (userPasswordForm) {
   userPasswordForm.addEventListener('submit', /*#__PURE__*/function () {

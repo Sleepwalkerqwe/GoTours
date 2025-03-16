@@ -70,3 +70,28 @@ export const logout = async () => {
     showAlert('error', 'Error logging out! Try again.');
   }
 };
+
+export const reset = async (password, passwordConfirm, token) => {
+  try {
+    const res = await axios({
+      method: 'patch',
+      baseURL: '', // Переопределяем baseURL для этого запроса, оставляем его пустым
+      url: `/api/v1/users/resetPassword/${token}`, // Путь будет относительным
+      data: {
+        password,
+        passwordConfirm,
+      },
+    });
+
+    if (res.data.status == 'success') {
+      showAlert('success', 'Reset successfully!');
+      window.setTimeout(() => {
+        location.assign('/');
+      }, 1500);
+    }
+  } catch (err) {
+    console.log(err);
+    console.log(err.message);
+    showAlert('error', 'Error reset password!! Try again.');
+  }
+};
