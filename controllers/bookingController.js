@@ -95,8 +95,9 @@ exports.webhookCheckout = (req, res, next) => {
   let event;
   try {
     console.log('STRIPE_WEBHOOK_SECRET:', process.env.STRIPE_WEBHOOK_SECRET);
-    console.log('Raw body:', req.body instanceof Buffer ? '[Buffer Data]' : req.body);
-    console.log('Signature:', signature);
+    console.log('Stripe signature:', signature);
+    console.log('Body content (raw):', req.body);
+
     event = stripe.webhooks.constructEvent(
       req.body, // Должен быть Buffer
       signature,
