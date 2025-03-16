@@ -8,6 +8,7 @@ const User = require('../models/userModel');
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   // 1) Get the currently booked tour
   const tour = await Tour.findById(req.params.tourId);
+
   // 2) Create checkout session
   let session;
   if (tour.price == 0) {
@@ -62,6 +63,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 
   // 3) Create session as response
   console.log('getCheckOutSession done');
+
   res.status(200).json({
     status: 'success',
     session,
@@ -104,6 +106,8 @@ exports.webhookCheckout = (req, res, next) => {
     console.log('❌ Webhook error:', err.message);
     return res.status(400).send(`Webhook error: ${err.message}`);
   }
+
+  console.log('event type is', event.type);
 
   if (event.type === 'checkout.session.completed') {
     createBookingCheckout(event.data.object);
