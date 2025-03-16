@@ -86,6 +86,7 @@ exports.webhookCheckout = (req, res, next) => {
   console.log('Is Buffer:', Buffer.isBuffer(req.body)); // Должно быть true
 
   const signature = req.headers['stripe-signature'];
+
   if (!signature) {
     console.log('❌ Ошибка: Stripe-Signature отсутствует!');
     return res.status(400).send('Webhook error: Missing Stripe signature');
@@ -94,7 +95,8 @@ exports.webhookCheckout = (req, res, next) => {
   let event;
   try {
     console.log('STRIPE_WEBHOOK_SECRET:', process.env.STRIPE_WEBHOOK_SECRET);
-
+    console.log('Raw body:', req.body instanceof Buffer ? '[Buffer Data]' : req.body);
+    console.log('Signature:', signature);
     event = stripe.webhooks.constructEvent(
       req.body, // Должен быть Buffer
       signature,
