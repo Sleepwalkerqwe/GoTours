@@ -76,13 +76,8 @@ export const forgot = async (email) => {
     const res = await axios({
       method: 'POST',
       baseURL: '', // Переопределяем baseURL для этого запроса, оставляем его пустым
-      // url: 'https://gotours.onrender.com/login/forgotPassword
-      // url: 'https://gotours.onrender.com/api/v1/users/forgotPassword
-      // url: 'https://gotours.onrender.com
 
-      // POST https://gotours.onrender.com/api/v1/users/forgotPassword 500
-
-      url: 'https://gotours.onrender.com/api/v1/users/forgotPassword',
+      url: 'api/v1/users/forgotPassword',
       data: {
         email,
       },
@@ -96,6 +91,11 @@ export const forgot = async (email) => {
     console.log(err.message);
     showAlert('error', 'Error reset password!! Try again.');
   }
+  // url: 'https://gotours.onrender.com/login/forgotPassword
+  // url: 'https://gotours.onrender.com/api/v1/users/forgotPassword
+  // url: 'https://gotours.onrender.com
+
+  // POST https://gotours.onrender.com/api/v1/users/forgotPassword 500
 };
 
 export const reset = async (password, passwordConfirm, token) => {
