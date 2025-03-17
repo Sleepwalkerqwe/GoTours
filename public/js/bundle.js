@@ -12794,7 +12794,7 @@ var forgot = exports.forgot = /*#__PURE__*/function () {
           _context4.t0 = _context4["catch"](0);
           console.log(_context4.t0);
           console.log(_context4.t0.message);
-          (0, _alert.showAlert)('error', 'Error reset password!! Try again.');
+          (0, _alert.showAlert)('error', 'Error reset password! Try again.');
         case 12:
         case "end":
           return _context4.stop();

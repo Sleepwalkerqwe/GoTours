@@ -89,7 +89,7 @@ export const forgot = async (email) => {
   } catch (err) {
     console.log(err);
     console.log(err.message);
-    showAlert('error', 'Error reset password!! Try again.');
+    showAlert('error', 'Error reset password! Try again.');
   }
   // url: 'https://gotours.onrender.com/login/forgotPassword
   // url: 'https://gotours.onrender.com/api/v1/users/forgotPassword
