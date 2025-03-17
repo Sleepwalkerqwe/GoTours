@@ -12785,7 +12785,7 @@ var forgot = exports.forgot = /*#__PURE__*/function () {
           res = _context4.sent;
           if (res.data.status == 'success') {
             console.log('sgsfdjasdli');
-            (0, _alert.showAlert)('success', 'Reset successfully!');
+            (0, _alert.showAlert)('success', 'Link was sent to the email');
           }
           _context4.next = 12;
           break;

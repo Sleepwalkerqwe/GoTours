@@ -84,7 +84,7 @@ export const forgot = async (email) => {
     });
     if (res.data.status == 'success') {
       console.log('sgsfdjasdli');
-      showAlert('success', 'Reset successfully!');
+      showAlert('success', 'Link was sent to the email');
     }
   } catch (err) {
     console.log(err);
