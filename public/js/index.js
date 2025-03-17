@@ -29,8 +29,9 @@ if (mapBox) {
 
 if (loginForm) {
   console.log('login form is here');
+  const forgotText = document.querySelector('#forgotText');
 
-  forgotBtn.addEventListener('click', (e) => {
+  forgotText.addEventListener('click', (e) => {
     console.log(123);
 
     const email = document.getElementById('email').value;
@@ -91,6 +92,14 @@ if (resetPasswordForm) {
 if (logOutBtn) logOutBtn.addEventListener('click', logout);
 
 if (userDataForm) {
+  forgotBtn.addEventListener('click', (e) => {
+    console.log(123);
+
+    const email = document.getElementById('email').value;
+    console.log(email);
+    forgot(email);
+  });
+
   userDataForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -142,6 +151,6 @@ if (saveSettingsBtn) {
   saveSettingsBtn.addEventListener('click', () => {
     setTimeout(function () {
       location.reload();
-    }, 1);
+    }, 100);
   });
 }
