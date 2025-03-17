@@ -76,7 +76,13 @@ export const forgot = async (email) => {
     const res = await axios({
       method: 'POST',
       baseURL: '', // Переопределяем baseURL для этого запроса, оставляем его пустым
-      url: 'api/v1/users/forgotPassword',
+      // url: 'https://gotours.onrender.com/login/forgotPassword
+      // url: 'https://gotours.onrender.com/api/v1/users/forgotPassword
+      // url: 'https://gotours.onrender.com
+
+      // POST https://gotours.onrender.com/api/v1/users/forgotPassword 500
+
+      url: 'https://gotours.onrender.com/api/v1/users/forgotPassword',
       data: {
         email,
       },

@@ -70,9 +70,7 @@ if (signupForm) {
 }
 
 if (resetPasswordForm) {
-  console.log('reset password form is here');
   const token = window.location.pathname.split('/').pop();
-  console.log('token is - ', token);
   resetPasswordForm.addEventListener('submit', (e) => {
     e.preventDefault();
     // VALUES
@@ -82,8 +80,6 @@ if (resetPasswordForm) {
     if (password !== passwordConfirm) {
       showAlert('error', 'Passwords must be same');
     } else {
-      console.log('signup in progress');
-
       reset(password, passwordConfirm, token);
     }
   });
@@ -93,8 +89,6 @@ if (logOutBtn) logOutBtn.addEventListener('click', logout);
 
 if (userDataForm) {
   forgotBtn.addEventListener('click', (e) => {
-    console.log(123);
-
     const email = document.getElementById('email').value;
     console.log(email);
     forgot(email);
@@ -108,7 +102,6 @@ if (userDataForm) {
     form.append('email', document.getElementById('email').value);
 
     form.append('photo', document.getElementById('photo').files[0]);
-    console.log(form);
 
     updateSettings(form, 'data');
   });
@@ -148,9 +141,8 @@ if (logoHeader && logoFooter) {
 }
 
 if (saveSettingsBtn) {
-  saveSettingsBtn.addEventListener('click', () => {
-    setTimeout(function () {
-      location.reload();
-    }, 100);
+  saveSettingsBtn.addEventListener('click', async () => {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    location.reload();
   });
 }
