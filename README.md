@@ -18,7 +18,7 @@ GoTours is a web application for booking tours, designed for travelers to explor
   <p align="center">
     An awesome platofrm to plan your tours!
     <br />
-    <a href="https://documenter.getpostman.com/view/26553162/2s9YRCXrKV"><strong>Explore the API »</strong></a>
+    <a href="https://documenter.getpostman.com/view/39911722/2sAYQiATE5"><strong>Explore the API »</strong></a>
     <br />
     <br />
     <a href="https://gotours.onrender.com">View Demo</a>
