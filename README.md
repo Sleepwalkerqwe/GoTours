@@ -1,6 +1,4 @@
 
-
-```md
 <h1 align="center">
   GoTours
 </h1>
@@ -137,5 +135,4 @@ GoTours/
 ---
 
 <p align="right"><a href="#top">⬆ back to top</a></p>
-```
 
