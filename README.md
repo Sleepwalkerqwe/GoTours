@@ -15,7 +15,16 @@
 </p>
 
 ---
+## 💡 Project Origin & My Contributions
 
+This project is based on the advanced backend architecture from Jonas Schmedtmann's Node.js curriculum ("Natours"). While the core concept serves as an educational foundation, I have gone beyond the tutorial code to treat this as a **production-ready product**.
+
+**My focus was on taking the code from "local environment" to "real world usage":**
+
+* **Production Deployment:** Unlike the course setup, I successfully deployed and configured the app on **Render**, handling environment variables and production database connections.
+* **Professional Documentation:** I created comprehensive [Postman API Documentation](https://documenter.getpostman.com/view/39911722/2sAYQiATE5) with example requests/responses, making the API easy to consume for frontend developers.
+* **Code Ownership:** I have deeply analyzed and refactored parts of the logic to ensure a full understanding of the MVC pattern, JWT security flow, and Stripe payment integration.
+  
 ## 📌 About the Project
 
 **GoTours** is a full-stack tour booking platform with a strong focus on a production-ready backend and a well-documented REST API.
