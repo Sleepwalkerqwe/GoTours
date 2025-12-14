@@ -1,106 +1,141 @@
+
+
+```md
 <h1 align="center">
-  <br>
-<!--   <a href="https://github.com/Sleepwalkerqwe/GoTours"><img src="https://natours.netlify.app/img/logo-green-2x.png" alt="Natours" width="200"></a> -->
-  <br>
   GoTours
-  <br>
 </h1>
 
-## About The Project
+<p align="center">
+  <strong>Tour Booking Platform & REST API</strong><br/>
+  Backend-focused project built with Node.js, Express, and MongoDB
+</p>
 
-GoTours is a web application for booking tours, designed for travelers to explore iconic destinations effortlessly. It provides curated tours, seamless facilities, and unforgettable adventures. Users can access the platform through the web interface or integrate with the system via the provided REST API.
+<p align="center">
+  <a href="https://gotours.onrender.com">Live Demo</a>
+  ·
+  <a href="https://documenter.getpostman.com/view/39911722/2sAYQiATE5">API Documentation</a>
+</p>
 
-<br />
-<div align="center">
-  
-  <h3 align="center">GoTours API 🌏</h3>
+---
 
-  <p align="center">
-    An awesome platofrm to plan your tours!
-    <br />
-    <a href="https://documenter.getpostman.com/view/39911722/2sAYQiATE5"><strong>Explore the API »</strong></a>
-    <br />
-    <br />
-    <a href="https://gotours.onrender.com">View Demo</a>
-    ·
-    ·
-  </p>
-</div>
-<br />
+## 📌 About the Project
 
+**GoTours** is a full-stack tour booking platform with a strong focus on a production-ready backend and a well-documented REST API.
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary><span>Table of Contents<span></summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+The application allows users to explore tours, book them securely, write reviews, and manage accounts.  
+It also provides **admin-protected endpoints** for managing tours, users, and reviews.
 
-<h4 align="center">GoTours: Explore iconic destinations effortlessly. Curated tours, seamless facilities, and unforgettable adventures await. Accessible via our user-friendly platform or integrate seamlessly using our API.</h4>
+The project was built to demonstrate:
+- RESTful API design
+- Secure authentication and authorization
+- Role-based access control
+- Real-world backend architecture
 
+---
 
-### Built With
+## ✨ Key Features
 
-This section showcases the foundational elements of my project. Here, you'll find a brief overview of the key frameworks and libraries that were instrumental in bringing this project to life.
+### 👤 Users
+- Signup / login with JWT authentication
+- Update profile and password
+- Book tours via Stripe
+- Write and manage reviews
 
-## backend
+### 🛠 Admin / Guide
+- Create, update, and delete tours
+- Manage users
+- View platform statistics
+- Access protected API routes
 
-![NodeJS](https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node-dot-js&logoColor=white)
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-![Mongoose.js](https://img.shields.io/badge/mongoose.js-brown?style=for-the-badge&logo=mongoose&logoColor=brown&labelColor=white)
-![MongoDB](https://img.shields.io/badge/-MongoDB-13aa52?style=for-the-badge&logo=mongodb&logoColor=white)
+### 🔒 Security
+- JWT authentication (Bearer tokens)
+- Role-based access control
+- Password hashing
+- Data validation and sanitization
+- Rate limiting and secure headers
 
-## Services/Libraries Used
-![GMAIL](https://img.shields.io/badge/gmail-brown?style=for-the-badge&logo=gmail&labelColor=white)
-![Stripe](https://img.shields.io/badge/stripe-green?style=for-the-badge&logo=stripe&labelColor=white
-)
-![Nodemailer](https://img.shields.io/badge/nodemailer-blue?style=for-the-badge
-)
-![Nodemon](https://img.shields.io/badge/nodemon-green?style=for-the-badge&logo=nodemon&logoColor=white
-)
-![Pug](https://img.shields.io/badge/pug-brown?style=for-the-badge&logo=pug&logoColor=white
-)
-![validator](https://img.shields.io/badge/validator-grey?style=for-the-badge&logo=validator&logoColor=white
-)
-![jsonwebtoken](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)
+---
 
+## 🧱 Tech Stack
 
-## frontend 
+### Backend
+- **Node.js**
+- **Express.js**
+- **MongoDB & Mongoose**
+- **JWT Authentication**
+- **Stripe Payments**
+- **Nodemailer**
+- **Server-Side Rendering (Pug)**
 
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+### Frontend
+- HTML5
+- CSS3
+- Pug Templates (SSR)
 
+### Tools & Services
+- Git & GitHub
+- Postman (API testing & documentation)
+- Render (deployment)
+- Visual Studio Code
 
-## Tools
+---
 
-![git](https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Visual Studio](https://img.shields.io/badge/visualstudio-black?style=for-the-badge&logo=visual%20studio&logoColor=blue
-)
+## 📡 REST API
 
-## REST API
+GoTours exposes a fully-featured REST API.
 
-GoTours provides a RESTful API
+### API Documentation
+👉 **Postman Documenter**  
+https://documenter.getpostman.com/view/39911722/2sAYQiATE5
 
-## Deployment
+### API Capabilities
+- Tours (CRUD, stats, geolocation queries)
+- Users & authentication
+- Reviews (including nested routes)
+- Protected & admin-only endpoints
 
-The project is hosted on Render - https://gotours.onrender.com
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Base URL:
+```
+
+[https://gotours.onrender.com/api/v1](https://gotours.onrender.com/api/v1)
+
+```
+
+---
+
+## 🚀 Deployment
+
+The project is deployed on **Render**:
+
+🔗 https://gotours.onrender.com
+
+---
+
+## 📂 Project Structure
+
+```
+
+GoTours/
+│
+├── controllers/      # Business logic
+├── models/           # Mongoose schemas
+├── routes/           # API routes
+├── utils/            # Helpers (auth, email, error handling)
+├── views/            # Pug templates (SSR)
+├── public/           # Static assets
+└── server.js         # App entry point
+
+```
+
+---
+
+## 📬 Contact
+
+**GitHub:** https://github.com/Sleepwalkerqwe  
+**Telegram:** https://t.me/sleepwalkerua  
+
+---
+
+<p align="right"><a href="#top">⬆ back to top</a></p>
+```
+
